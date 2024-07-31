@@ -11,16 +11,43 @@ body {
 
 .content {
     height: 100%;
-
+    background-color: gray;
     display: flex;
     justify-content:  center;
     align-items: center !important;
 }
 
 .box-content {
-   width: 300px !important;
-   background: #208EEB;
-   padding: 15px;
-   border-radius: 5px;
-   color: #FFF
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px !important;
+    height: 400px;
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.box-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.box-header h1 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.box-header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.box-header strong {
+    text-transform: uppercase;
 }
