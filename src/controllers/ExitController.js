@@ -166,7 +166,7 @@ class ExitController {
   async destroy(req, res) {
     const { id } = req.params;
 
-    await Exit.findByIdAndRemove(id);
+    await Exit.findByIdAndDelete(id);
 
     return res.redirect("/exits");
   }

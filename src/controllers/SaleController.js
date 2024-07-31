@@ -173,7 +173,7 @@ class SaleController {
     const entrance = await Entrance.find({ sale: sale._id });
 
     await Entrance.findByIdAndDelete(entrance[0]._id);
-    // await Entrance.findByIdAndRemove(entrance[0]._id);
+    // await Entrance.findByIdAndDelete(entrance[0]._id);
 
     return res.redirect('/sales');
   }
@@ -199,6 +199,7 @@ class SaleController {
 
   async destroyAll(req, res) {
     let { cart } = req.session;
+    // console.log(cart)
 
     const variedProduct = await Product.findOne({
       name: 'PRODUTOS VARIADOS',

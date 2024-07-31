@@ -72,8 +72,8 @@ class ProductController {
     }
 
     let products = await Product.paginate(filters, {
-      // limit: parseInt(req.query.limit_page) || 2000,
-      // sort: "-createdAt",
+      limit: parseInt(req.query.limit_page) || 2000,
+      sort: "-createdAt",
     });
 
     const getProductsPromise = products.docs.map(async (product) => {
@@ -217,7 +217,7 @@ class ProductController {
   async destroy(req, res) {
     const { id } = req.params;
 
-    await Product.findByIdAndRemove(id);
+    await Product.findByIdAndDelete(id);
 
     return res.redirect("/productslist");
   }

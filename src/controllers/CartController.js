@@ -117,7 +117,7 @@ class CartController {
       changeFormate = formatCurrency.brl(0);
     }
 
-    console.log(cart);
+    // console.log(cart);
 
     return res.render('cart/list', {
       cart,

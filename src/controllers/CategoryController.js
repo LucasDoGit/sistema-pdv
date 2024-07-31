@@ -40,7 +40,7 @@ class CategoryController {
   async destroy(req, res) {
     const { id } = req.params;
 
-    await Category.findByIdAndRemove(id);
+    await Category.findByIdAndDelete(id);
 
     return res.redirect("/categoryslist");
   }

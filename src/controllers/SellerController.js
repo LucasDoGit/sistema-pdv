@@ -69,7 +69,7 @@ class SellerController {
   async destroy(req, res) {
     const { id } = req.params;
 
-    await User.findByIdAndRemove(id);
+    await User.findByIdAndDelete(id);
 
     return res.redirect('/userslist');
   }

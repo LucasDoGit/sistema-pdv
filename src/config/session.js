@@ -6,7 +6,6 @@ import session from 'express-session';
 const MongoDBStore = ConnectMongoDBSession(session)
 
 const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@mondie.39z3lbi.mongodb.net/${process.env.DB_COLLECTION}?retryWrites=true&w=majority&appName=Mondie`
-// const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@mondie.39z3lbi.mongodb.net/?retryWrites=true&w=majority`;
 
 const sessionConfig = session({
   store: new MongoDBStore({
