@@ -6,7 +6,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override'
 import sessionConfig from './config/session.js';
-import path from 'path';
 import connectToDatabase from './database/db.js';
 import routes from './routes.js'
 
@@ -21,12 +20,6 @@ server.use(sessionConfig);
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.json());
 server.use(methodOverride("_method"));
-
-// nunjucks.configure(__dirname + "views"), {
-//   watch: true,
-//   express: server,
-//   autoescape: true,
-// };
 
 nunjucks.configure('src/views', {
   watch: true,
