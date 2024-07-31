@@ -9,4 +9,4 @@ const formatCurrency = {
   },
 };
 
-module.exports = formatCurrency;
+export default formatCurrency;

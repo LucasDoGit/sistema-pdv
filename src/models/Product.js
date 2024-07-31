@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate");
+import mongoose from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2'
 
 const ProductSchema = new mongoose.Schema({
   barcode: {
@@ -32,4 +32,6 @@ const ProductSchema = new mongoose.Schema({
 });
 
 ProductSchema.plugin(mongoosePaginate);
-module.exports = mongoose.model("Product", ProductSchema);
+const Product = mongoose.model("Product", ProductSchema);
+
+export default Product;

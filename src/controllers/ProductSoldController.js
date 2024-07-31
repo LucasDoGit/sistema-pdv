@@ -1,6 +1,6 @@
-const ProductSold = require("../models/ProductSold");
-const Product = require("../models/Product");
-const moment = require("moment");
+import ProductSold from "../models/ProductSold.js";
+import Product from "../models/Product.js";
+import moment from "moment";
 
 class ProductSoldController {
   create(req, res) {
@@ -79,4 +79,4 @@ class ProductSoldController {
   }
 }
 
-module.exports = new ProductSoldController();
+export default new ProductSoldController();

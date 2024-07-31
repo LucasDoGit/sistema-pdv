@@ -1,6 +1,6 @@
-const moment = require("moment");
-const Exit = require("../models/Exit");
-const formatCurrency = require("../lib/formatCurrency");
+import moment from "moment";
+import Exit from "../models/Exit.js";
+import formatCurrency from "../lib/formatCurrency.js";
 
 class ExitController {
   async index(req, res) {
@@ -172,4 +172,4 @@ class ExitController {
   }
 }
 
-module.exports = new ExitController();
+export default new ExitController();

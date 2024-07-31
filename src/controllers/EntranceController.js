@@ -1,11 +1,12 @@
-const moment = require("moment");
-const Entrance = require("../models/Entrance");
-const formatCurrency = require("../lib/formatCurrency");
+import moment from "moment";
+import Entrance from "../models/Entrance.js";
+import formatCurrency from "../lib/formatCurrency.js";
 
 class EntranceController {
   async index(req, res) {
     const userLogged = req.session.userId;
     
+    console.log(userLogged)
     if(userLogged.type !== "ADMIN") {
       return res.render("notPermission/index");
     }
@@ -80,4 +81,4 @@ class EntranceController {
   }
 }
 
-module.exports = new EntranceController();
+export default new EntranceController();

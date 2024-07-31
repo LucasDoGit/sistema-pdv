@@ -1,7 +1,7 @@
-const moment = require('moment');
-const Sale = require('../models/Sale');
-const formatCurrency = require('../lib/formatCurrency');
-const Seller = require('../models/Seller');
+import moment from 'moment';
+import Sale from '../models/Sale.js';
+import formatCurrency from '../lib/formatCurrency.js';
+import Seller from '../models/Seller.js';
 
 class SellerCommissionController {
   async index(req, res) {
@@ -109,4 +109,4 @@ class SellerCommissionController {
   }
 }
 
-module.exports = new SellerCommissionController();
+export default new SellerCommissionController();

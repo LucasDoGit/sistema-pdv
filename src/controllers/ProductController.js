@@ -1,6 +1,6 @@
-const moment = require("moment");
-const formatCurrency = require("../lib/formatCurrency");
-const Product = require("../models/Product");
+import moment from "moment";
+import formatCurrency from "../lib/formatCurrency.js";
+import Product from "../models/Product.js";
 
 class ProductController {
   create(req, res) {
@@ -72,8 +72,8 @@ class ProductController {
     }
 
     let products = await Product.paginate(filters, {
-      limit: parseInt(req.query.limit_page) || 2000,
-      sort: "-createdAt",
+      // limit: parseInt(req.query.limit_page) || 2000,
+      // sort: "-createdAt",
     });
 
     const getProductsPromise = products.docs.map(async (product) => {
@@ -223,4 +223,4 @@ class ProductController {
   }
 }
 
-module.exports = new ProductController();
+export default new ProductController();

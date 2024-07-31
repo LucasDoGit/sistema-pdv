@@ -1,4 +1,4 @@
-const Category = require("../models/Category");
+import Category from "../models/Category.js";
 
 class CategoryController {
   create(req, res) {
@@ -46,4 +46,4 @@ class CategoryController {
   }
 }
 
-module.exports = new CategoryController();
+export default new CategoryController();

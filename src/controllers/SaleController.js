@@ -1,9 +1,9 @@
-const moment = require('moment');
-const Sale = require('../models/Sale');
-const Cart = require('../lib/cart');
-const Product = require('../models/Product');
-const Entrance = require('../models/Entrance');
-const formatCurrency = require('../lib/formatCurrency');
+import moment from 'moment';
+import Sale from '../models/Sale.js';
+import Cart from '../lib/cart.js';
+import Product from '../models/Product.js';
+import Entrance from '../models/Entrance.js';
+import formatCurrency from '../lib/formatCurrency.js';
 
 class SaleController {
   async index(req, res) {
@@ -147,7 +147,7 @@ class SaleController {
     cart.items.map(async (item) => {
       cart = Cart.init(cart).delete({
         id: item.product._id,
-        variedProductID: variedProduct._id,
+        // variedProductID: variedProduct._id,
       });
       req.session.cart = cart;
     });
@@ -172,7 +172,8 @@ class SaleController {
 
     const entrance = await Entrance.find({ sale: sale._id });
 
-    await Entrance.findByIdAndRemove(entrance[0]._id);
+    await Entrance.findByIdAndDelete(entrance[0]._id);
+    // await Entrance.findByIdAndRemove(entrance[0]._id);
 
     return res.redirect('/sales');
   }
@@ -208,7 +209,7 @@ class SaleController {
     cart.items.map(async (item) => {
       cart = Cart.init(cart).delete({
         id: item.product._id,
-        variedProductID: variedProduct._id,
+        // variedProductID: variedProduct._id,
       });
       req.session.cart = cart;
     });
@@ -217,4 +218,4 @@ class SaleController {
   }
 }
 
-module.exports = new SaleController();
+export default new SaleController();

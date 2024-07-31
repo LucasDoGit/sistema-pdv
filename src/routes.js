@@ -1,21 +1,26 @@
-const express = require('express');
+import express from 'express';
 
-const UserController = require('./controllers/UserController');
-const CategoryController = require('./controllers/CategoryController');
-const ProductController = require('./controllers/ProductController');
-const ProductSoldController = require('./controllers/ProductSoldController');
-const CartController = require('./controllers/CartController');
-const SaleController = require('./controllers/SaleController');
-const ExitController = require('./controllers/ExitController');
-const EntranceController = require('./controllers/EntranceController');
-const EntranceAndExitController = require('./controllers/EntranceAndExitController');
-const SessionController = require('./controllers/SessionController');
-const SellerController = require('./controllers/SellerController');
-const SellerCommissionController = require('./controllers/SellerCommissionController');
+import UserController from './controllers/UserController.js';
+import CategoryController from './controllers/CategoryController.js';
+import ProductController from './controllers/ProductController.js';
+import ProductSoldController from './controllers/ProductSoldController.js';
+import CartController from './controllers/CartController.js';
+import SaleController from './controllers/SaleController.js';
+import ExitController from './controllers/ExitController.js';
+import EntranceController from './controllers/EntranceController.js';
+import EntranceAndExitController from './controllers/EntranceAndExitController.js';
+import SessionController from './controllers/SessionController.js';
+import SellerController from './controllers/SellerController.js';
+import SellerCommissionController from './controllers/SellerCommissionController.js';
 
-const middleware = require('./middlewares/session');
+import middleware from './middlewares/session.js';
 
 const routes = express.Router();
+
+// routes.use('/login', async (req, res) => {
+//   console.log('rota acessada com sucesso')
+//   return res.status(200)
+// })
 
 routes.get('/login', SessionController.loginForm);
 routes.post('/logout', SessionController.logout);
@@ -23,7 +28,7 @@ routes.post('/session', SessionController.store);
 
 routes.get('/sales/:id', SaleController.show);
 
-routes.use(middleware);
+// routes.use(middleware);
 
 routes.get('/', (req, res) => {
   return res.render('home/index');
@@ -110,4 +115,4 @@ routes.get('/entrancesandexits', (req, res) => {
   return res.render('entranceandexit/list');
 });
 
-module.exports = routes;
+export default routes;

@@ -1,4 +1,4 @@
-const User = require("../models/User");
+import User from '../models/User.js';
 
 class SessionController {
   loginForm(req, res) {
@@ -36,4 +36,4 @@ class SessionController {
   }
 }
 
-module.exports = new SessionController();
+export default new SessionController();

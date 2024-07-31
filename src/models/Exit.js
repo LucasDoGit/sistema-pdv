@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate");
+import mongoose from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const ExitSchema = new mongoose.Schema({
   descriptionExit: String,
@@ -20,4 +20,6 @@ const ExitSchema = new mongoose.Schema({
 });
 
 ExitSchema.plugin(mongoosePaginate);
-module.exports = mongoose.model("Exit", ExitSchema);
+const Exit = mongoose.model("Exit", ExitSchema);
+
+export default Exit;

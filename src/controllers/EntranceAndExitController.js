@@ -1,7 +1,7 @@
-const moment = require("moment");
-const Entrance = require("../models/Entrance");
-const Exit = require("../models/Exit");
-const formatCurrency = require("../lib/formatCurrency");
+import moment from "moment";
+import Entrance from "../models/Entrance.js";
+import Exit from "../models/Exit.js";
+import formatCurrency from "../lib/formatCurrency.js";
 
 class EntranceAndExitController {
   async index(req, res) {
@@ -116,4 +116,4 @@ class EntranceAndExitController {
   }
 }
 
-module.exports = new EntranceAndExitController();
+export default new EntranceAndExitController();

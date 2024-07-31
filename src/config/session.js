@@ -1,16 +1,25 @@
-const session = require("express-session");
-const MongoDBStore = require("connect-mongodb-session")(session);
+import ConnectMongoDBSession from 'connect-mongodb-session';
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = session({
+import session from 'express-session';
+const MongoDBStore = ConnectMongoDBSession(session)
+
+const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@mondie.39z3lbi.mongodb.net/${process.env.DB_COLLECTION}?retryWrites=true&w=majority&appName=Mondie`
+// const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@mondie.39z3lbi.mongodb.net/?retryWrites=true&w=majority`;
+
+const sessionConfig = session({
   store: new MongoDBStore({
-    uri: process.env.DB_URL,
-    databaseName: "cms",
-    collection: "mySessions",
+    uri: dbURI,
+    databaseName: "base-testes",
+    collection: "timoteos-modas",
   }),
-  secret: "secretsessiontest",
+  secret: 'your-secret-key',  // Substitua por uma chave secreta forte
   resave: false,
-  saveUninitializad: false,
+  saveUninitialized: true,
   cookie: {
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+     maxAge: 30 * 24 * 60 * 60 * 1000,
   },
-});
+})
+
+export default sessionConfig;

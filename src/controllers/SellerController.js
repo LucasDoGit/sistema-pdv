@@ -1,5 +1,5 @@
-const Seller = require('../models/Seller');
-const User = require('../models/User');
+import Seller from '../models/Seller.js';
+import User from '../models/User.js';
 
 class SellerController {
   create(req, res) {
@@ -75,4 +75,4 @@ class SellerController {
   }
 }
 
-module.exports = new SellerController();
+export default new SellerController();

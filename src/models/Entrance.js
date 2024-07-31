@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate");
+import e from "express";
+import mongoose from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const EntranceSchema = new mongoose.Schema({
   sale: {
@@ -18,4 +19,6 @@ const EntranceSchema = new mongoose.Schema({
 });
 
 EntranceSchema.plugin(mongoosePaginate);
-module.exports = mongoose.model("Entrance", EntranceSchema);
+const Entrance = mongoose.model("Entrance", EntranceSchema);
+
+export default Entrance;

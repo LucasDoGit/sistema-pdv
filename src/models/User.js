@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate");
-const bcrypt = require("bcryptjs");
+import mongoose from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
+import bcrypt from "bcryptjs";
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -46,4 +46,6 @@ UserSchema.methods = {
 };
 
 UserSchema.plugin(mongoosePaginate);
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
+
+export default User;

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const SaleSchema = new mongoose.Schema({
   sale: {
@@ -37,4 +37,6 @@ const SaleSchema = new mongoose.Schema({
 });
 
 SaleSchema.plugin(mongoosePaginate);
-module.exports = mongoose.model('Sale', SaleSchema);
+const Sale = mongoose.model('Sale', SaleSchema);
+
+export default Sale;

@@ -1,9 +1,9 @@
-const moment = require('moment');
-const Cart = require('../lib/cart');
-const Product = require('../models/Product');
-const formatCurrency = require('../lib/formatCurrency');
-const { insertMany } = require('../models/Product');
-const Seller = require('../models/Seller');
+import moment from 'moment';
+import Cart from '../lib/cart.js';
+import Product from '../models/Product.js';
+import formatCurrency from '../lib/formatCurrency.js';
+// import { insertMany } from '../models/Product.js'; // estava antes da refatoracao
+import Seller from '../models/Seller.js';
 
 class CartController {
   async index(req, res) {
@@ -86,7 +86,7 @@ class CartController {
       return res.render('cart/list', {
         cart,
         products,
-        idVariedProduct: variedProduct._id,
+        // idVariedProduct: variedProduct._id,
         sellers,
       });
     }
@@ -123,7 +123,7 @@ class CartController {
       cart,
       changeFormate,
       change,
-      idVariedProduct: variedProduct._id,
+      // idVariedProduct: variedProduct._id,
       sellers,
     });
   }
@@ -247,4 +247,4 @@ class CartController {
   }
 }
 
-module.exports = new CartController();
+export default new CartController();

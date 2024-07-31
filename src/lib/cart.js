@@ -1,4 +1,4 @@
-const uuid  = require("uuid");
+import { v4 as uuidv4 } from 'uuid';
 
 let addValue = 0;
 let addValueDelete = 0;
@@ -52,7 +52,7 @@ const Cart = {
 
     if(String(product.product[0]._id) === String(product.idVariedProduct)) {
       addValue = Number(product.addValue);
-      this.productsVariedValues.push({id: uuid.v4() ,value: addValue});
+      this.productsVariedValues.push({id: uuidv4() ,value: addValue});
       addValueDelete += addValue;
       inCart.price += addValue; 
       this.total.price += addValue;
@@ -127,4 +127,4 @@ const Cart = {
   },
 };
 
-module.exports = Cart;
+export default Cart;

@@ -1,37 +1,40 @@
-require("dotenv").config();
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+import nunjucks from 'nunjucks'
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import methodOverride from 'method-override'
+import sessionConfig from './config/session.js';
+import path from 'path';
+import connectToDatabase from './database/db.js';
+import routes from './routes.js'
 
-const express = require("express");
-const mongoose = require("mongoose");
-const nunjucks = require("nunjucks");
-const bodyParser = require("body-parser");
-const methodOverride = require("method-override");
-const session = require("./config/session");
-const cors = require("cors");
-const path = require("path");
+const server = express();
+server.use(cors());
 
-const app = express();
-app.use(cors());
+server.use(express.static("public"));
 
-app.use(express.static("public"));
+await connectToDatabase();
 
-mongoose.connect(process.env.DB_URL, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+server.use(sessionConfig);
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(express.json());
+server.use(methodOverride("_method"));
 
-app.use(session);
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(methodOverride("_method"));
+// nunjucks.configure(__dirname + "views"), {
+//   watch: true,
+//   express: server,
+//   autoescape: true,
+// };
 
-nunjucks.configure(path.resolve(__dirname, "views"), {
+nunjucks.configure('src/views', {
   watch: true,
-  express: app,
-  autoescape: true,
+  express: server,
+  autoescape: true
 });
 
-app.set("view engine", "njk");
-app.use(require("./routes"));
+server.set("view engine", "njk");
+server.use(routes);
 
-app.listen(process.env.PORT || 3002);
+server.listen(process.env.PORT || 3002);
